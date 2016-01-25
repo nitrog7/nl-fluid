@@ -1,0 +1,308 @@
+$btn-color-success: $color-success !default;
+$btn-color-warning: $color-warning !default;
+$btn-color-danger: $color-danger !default;
+
+$btn-color-default-label: $color-white !default;
+$btn-color-default-bg: $color-neutral-darker !default;
+$btn-color-active-default-label: $btn-color-default-label !default;
+$btn-color-active-default-bg: darken($btn-color-default-bg, 15%) !default;
+
+$btn-color-primary-label: $color-white !default;
+$btn-color-primary-bg: $color-primary-1-normal !default;
+$btn-color-active-primary-label: $btn-color-primary-label !default;
+$btn-color-active-primary-bg: darken($btn-color-primary-bg, 15%) !default;
+
+$btn-color-secondary-label: $color-white !default;
+$btn-color-secondary-bg: $color-primary-2-normal !default;
+$btn-color-active-secondary-label: $btn-color-secondary-label !default;
+$btn-color-active-secondary-bg: darken($btn-color-secondary-bg, 15%) !default;
+
+$btn-color-link-label: $color-primary-1-normal !default;
+$btn-color-active-link-label: darken($btn-color-link-label, 15%) !default;
+
+
+// Color Maps
+$btn-colors: (
+  default: (
+    label: $btn-color-default-label,
+    bg: $btn-color-default-bg,
+    activeLabel: $btn-color-active-default-label,
+    activeBg: $btn-color-active-default-bg
+  ),
+  primary: (
+    label: $btn-color-primary-label,
+    bg: $btn-color-primary-bg,
+    activeLabel: $btn-color-active-primary-label,
+    activeBg: $btn-color-active-primary-bg
+  ),
+  secondary: (
+    label: $btn-color-secondary-label,
+    bg: $btn-color-secondary-bg,
+    activeLabel: $btn-color-active-secondary-label,
+    activeBg: $btn-color-active-secondary-bg
+  ),
+  link: $btn-color-link-label,
+  success: $btn-color-success,
+  warning: $btn-color-warning,
+  danger: $btn-color-danger
+);
+
+// Mixins
+@mixin btn-color($name) {
+  color: map-get(map-get($btn-colors, $name), label);
+  background-color: map-get(map-get($btn-colors, $name), bg);
+  border-color: map-get(map-get($btn-colors, $name), bg);
+
+  &:hover {
+    background-color: map-get(map-get($btn-colors, $name), activeBg);
+    border-color: map-get(map-get($btn-colors, $name), activeBg);
+  }
+
+  &.btn-success {
+    background-color: $btn-color-success;
+    border-color: $btn-color-success;
+
+    &:hover {
+      background-color: darken($btn-color-success, 15%);
+      border-color: darken($btn-color-success, 15%);
+    }
+  }
+
+  &.btn-warning {
+    background-color: $btn-color-warning;
+    border-color: $btn-color-warning;
+
+    &:hover {
+      background-color: darken($btn-color-warning, 15%);
+      border-color: darken($btn-color-warning, 15%);
+    }
+  }
+
+  &.btn-danger {
+    background-color: $btn-color-danger;
+    border-color: $btn-color-danger;
+
+    &:hover {
+      background-color: darken($btn-color-danger, 15%);
+      border-color: darken($btn-color-danger, 15%);
+    }
+  }
+}
+
+@mixin btn-status($status) {
+  background-color: map-get($btn-colors, $status);
+  border-color: map-get($btn-colors, $status);
+
+  &:hover {
+    background-color: darken(map-get($btn-colors, $status), 15%);
+    border-color: darken(map-get($btn-colors, $status), 15%);
+  }
+}
+
+@mixin btn-link($status) {
+  color: map-get($btn-colors, $status);
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover {
+    color: darken(map-get($btn-colors, $status), 15%);
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+&.btn-success {
+  color: $btn-color-success;
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover {
+    color: darken($btn-color-success, 15%);
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+// Styles
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  font-weight: 700;
+  font-size: .8rem;
+  padding: 10px 20px;
+  border-radius: 3px;
+  user-select: none;
+  transition: 0.15s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: $btn-color-active-default-label;
+    background-color: $btn-color-active-default-bg;
+    border-color: $btn-color-active-default-bg;
+  }
+
+  &.btn-has-prefix {
+    padding-left: 12px;
+
+    .btn_prefix {
+      order: 1;
+      margin-right: 0.3rem;
+    }
+  }
+
+  & > span {
+    order: 2;
+  }
+
+  &.btn-has-suffix {
+    padding-right: 12px;
+
+    .btn_suffix {
+      order: 3;
+      margin-left: 0.3rem;
+    }
+  }
+
+  &.btn-is-loading {
+    .icon {
+      animation-name: spinnerRotate;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+
+  &.btn-sm {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  &.btn-default {
+    @include btn-color('default');
+  }
+
+  &.btn-primary {
+    @include btn-color('primary');
+  }
+
+  &.btn-secondary {
+    @include btn-color('secondary');
+  }
+
+  &.btn-success {
+    @include btn-status('success');
+  }
+
+  &.btn-warning {
+    @include btn-status('warning');
+  }
+
+  &.btn-danger {
+    @include btn-status('danger');
+  }
+
+  &.btn-ghost {
+    &.btn-default {
+      color: $btn-color-default-bg;
+      background-color: transparent;
+
+      &:hover {
+        color: darken($btn-color-default-bg, 15%);
+        border-color: darken($btn-color-default-bg, 15%);
+        background-color: transparent;
+      }
+    }
+
+    &.btn-primary {
+      color: $btn-color-primary-bg;
+      background-color: transparent;
+
+      &:hover {
+        color: darken($btn-color-primary-bg, 15%);
+        border-color: darken($btn-color-primary-bg, 15%);
+        background-color: transparent;
+      }
+    }
+
+    &.btn-secondary {
+      color: $btn-color-secondary-bg;
+      background-color: transparent;
+
+      &:hover {
+        color: darken($btn-color-secondary-bg, 15%);
+        border-color: darken($btn-color-secondary-bg, 15%);
+        background-color: transparent;
+      }
+    }
+
+    &.btn-success {
+      color: $btn-color-success;
+      background-color: transparent;
+
+      &:hover {
+        color: darken($btn-color-success, 15%);
+        border-color: darken($btn-color-success, 15%);
+        background-color: transparent;
+      }
+    }
+
+    &.btn-warning {
+      color: $btn-color-warning;
+      background-color: transparent;
+
+      &:hover {
+        color: darken($btn-color-warning, 15%);
+        border-color: darken($btn-color-warning, 15%);
+        background-color: transparent;
+      }
+    }
+
+    &.btn-danger {
+      color: $btn-color-danger;
+      background-color: transparent;
+
+      &:hover {
+        color: darken($btn-color-danger, 15%);
+        border-color: darken($btn-color-danger, 15%);
+        background-color: transparent;
+      }
+    }
+
+    &:hover {
+      color: $btn-color-active-secondary-label;
+      border-color: $btn-color-active-secondary-label;
+    }
+  }
+
+  &.btn-link {
+    @include btn-link('link');
+
+    &.btn-success {
+      @include btn-link('success');
+    }
+
+    &.btn-warning {
+      @include btn-link('warning');
+    }
+
+    &.btn-danger {
+      @include btn-link('danger');
+    }
+  }
+}
+
+// Animations
+@keyframes spinnerRotate {
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}

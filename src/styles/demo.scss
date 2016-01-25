@@ -1,0 +1,13 @@
+.page-layout {
+  display: flex;
+  flex-direction: row;
+  padding: 30px 15px;
+
+  .sideBar {
+    flex-basis: 250px;
+  }
+
+  .view-sideBar-content {
+    flex-grow: 1
+  }
+}

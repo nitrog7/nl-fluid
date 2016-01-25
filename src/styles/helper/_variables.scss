@@ -1,0 +1,76 @@
+$font-sans-serif: 'Open+Sans:400,300,300italic,400italic,700,700italic';
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-monospace:  'Roboto+Mono:400,700,400italic,700italic';
+$font-family-monospace:  'Roboto Mono', monospace;
+$font-family-base: $font-family-sans-serif;
+
+// Colors - Palette
+$color-primary-1-lighter: #dcfaff;
+$color-primary-1-light: #9cf0ff;
+$color-primary-1-normal: #009ade;
+$color-primary-1-dark: #006d9c;
+$color-primary-1-darker: #003144;
+
+$color-primary-2-lighter: #fbecef;
+$color-primary-2-light: #de556b;
+$color-primary-2-normal: #cf0a2c;
+$color-primary-2-dark: #900720;
+$color-primary-2-darker: #3c0310;
+
+$color-accent-1-lighter: #fbdda5;
+$color-accent-1-light: #ffd963;
+$color-accent-1-normal: #f5a71b;
+$color-accent-1-dark: #aa7412;
+$color-accent-1-darker: #5f4109;
+
+$color-accent-2-lighter: #b6f0d8;
+$color-accent-2-light: #4ee0a8;
+$color-accent-2-normal: #00d484;
+$color-accent-2-dark: #00955d;
+$color-accent-2-darker: #004129;
+
+$color-neutral-lighter: #f7f7f7;
+$color-neutral-light: #efefef;
+$color-neutral-normal: #cacaca;
+$color-neutral-dark: #bbb;
+$color-neutral-darker: #959595;
+
+// Default Colors
+$color-black: #333;
+$color-white: #fff;
+
+// Colors - Status
+$color-success: $color-accent-2-normal;
+$color-warning: $color-accent-1-normal;
+$color-danger: $color-primary-2-normal;
+
+// === TYPOGRAPHY ===
+$font-size-base: 14px;
+
+// Headings
+$font-size-h1: 2.57rem; // ~36px
+$font-size-h2: 2.14rem; // ~30px
+$font-size-h3: 1.72rem; // ~24px
+$font-size-h4: 1.29rem; // ~38px
+$font-size-h5: 1.00rem; // 14px
+$font-size-h6: 0.85rem; // ~12px
+
+$headings-margin-bottom: 0.6rem;
+$headings-font-family: $font-family-base;
+$headings-font-weight: 400;
+$headings-line-height: 1;
+$headings-color: $color-primary-1-normal;
+
+// Links
+$link-color-default: $color-primary-1-dark;
+$link-color-hover: $color-primary-1-normal;
+
+// === BODY ===
+$body-color-text: $color-black;
+$body-color-bg: $color-neutral-lighter;
+$body-line-height: 1;
+
+// INPUT
+$input-border: 1px solid $color-neutral-dark;
+$input-radius: 3px;
+$input-font-size: $font-size-base;

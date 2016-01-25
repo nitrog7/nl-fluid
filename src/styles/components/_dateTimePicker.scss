@@ -1,0 +1,273 @@
+$dateTimePicker-color-hover: $link-color-default !default;
+$dateTimePicker-color-separator: $color-neutral-normal !default;
+$dateTimePicker-color-text: $color-black !default;
+$dateTimePicker-color-bg: $color-white !default;
+$dateTimePicker-color-active-bg: $color-primary-1-lighter !default;
+$dateTimePicker-color-secondary: $color-primary-1-darker !default;
+$dateTimePicker-border: $input-border !default;
+$dateTimePicker-radius: $input-radius !default;
+
+.dateTimePicker {
+  display: flex;
+  flex-direction: column;
+
+  .dateTimePicker_container,
+  .datePicker_calendar,
+  .timePicker_editor {
+    color: $dateTimePicker-color-text;
+    background-color: $dateTimePicker-color-bg;
+    border: $dateTimePicker-border;
+    border-radius: $dateTimePicker-radius;
+  }
+
+  .datePicker_calendar,
+  .timePicker_editor {
+    margin-top: 3px;
+    background-color: $dateTimePicker-color-bg;
+  }
+
+  .dateTimePicker_container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    align-content: space-between;
+    z-index: 2;
+
+    .datePicker {
+      flex-grow: 1;
+      padding: 5px 0;
+
+      .datePicker_label {
+        font-size: $input-font-size;
+        padding: 5px 10px;
+        cursor: pointer;
+
+        &:hover,
+        &.dateTimePicker-active {
+          color: $dateTimePicker-color-hover;
+        }
+      }
+    }
+
+    .timePicker {
+      display: flex;
+
+      .timePicker_label {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: $input-font-size;
+        font-weight: 700;
+        border-left: 1px solid $dateTimePicker-color-separator;
+        padding: 5px 10px;
+        cursor: pointer;
+
+        .timePicker_label_time {
+          display: flex;
+
+          .timePicker_label_time_hour,
+          .timePicker_label_time_minute {
+            &:hover,
+            &.dateTimePicker-active {
+              color: $dateTimePicker-color-hover;
+            }
+          }
+        }
+
+        .timePicker_label_period {
+          &:hover {
+            color: $dateTimePicker-color-hover;
+          }
+        }
+      }
+    }
+  }
+
+  .datePicker_calendar {
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease-in-out;
+    z-index: 1;
+
+    .datePicker_calendar_hdr {
+      display: flex;
+      font-size: 18px;
+      align-items: center;
+      padding: 5px 10px;
+
+      .datePicker_calendar_hdr_prev,
+      .datePicker_calendar_hdr_next {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        opacity: 0.3;
+        cursor: pointer;
+
+        .icon {
+          width: 30px;
+          height: 30px;
+          transition: 0.15s ease-in;
+        }
+
+        &:hover {
+          opacity: 1;
+
+          .icon {
+            transform: translateX(0);
+          }
+        }
+      }
+
+      .datePicker_calendar_hdr_prev {
+        &:hover .icon {
+          transform: translateX(-3px);
+        }
+      }
+
+      .datePicker_calendar_hdr_next {
+        justify-content: flex-end;
+
+        &:hover .icon {
+          transform: translateX(3px);
+        }
+      }
+
+      .datePicker_calendar_hdr_month {
+        flex-basis: auto;
+
+        .datePicker_calendar_hdr_month_name {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .datePicker_calendar_weekday {
+      display: flex;
+      flex-direction: row;
+      color: $dateTimePicker-color-secondary;
+      border-bottom: 1px solid rgba(red($dateTimePicker-color-secondary), green($dateTimePicker-color-secondary), blue($dateTimePicker-color-secondary), 0.5);
+      margin: 5px 10px;
+      padding-bottom: 3px;
+      opacity: 0.5;
+
+      & > div {
+        flex-grow: 1;
+        font-size: 12px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    .datePicker_calendar_week {
+      display: flex;
+      flex-direction: row;
+      margin: 5px 10px;
+
+      .datePicker_calendar_day {
+        flex-basis: 14%;
+        text-align: center;
+        font-size: 18px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.15s ease-in;
+
+        &.datePicker_calendar_day-weekend {
+          color: $dateTimePicker-color-secondary;
+          font-weight: 400;
+          opacity: 0.5;
+        }
+
+        &:hover,
+        &.dateTimePicker-active {
+          color: $dateTimePicker-color-hover;
+          font-weight: 700;
+          opacity: 1;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .timePicker_editor {
+    display: flex;
+    flex-direction: row;
+    font-size: $input-font-size;
+    padding: 10px 0;
+    transition: 0.3s ease-in-out;
+    z-index: 1;
+
+    .timePicker_editor_label,
+    .timePicker_editor_item {
+      flex-grow: 1;
+    }
+
+    .timePicker_editor_label {
+      font-weight: 700;
+      padding: 0 10px;
+    }
+
+    .timePicker_editor_item {
+      text-align: center;
+      cursor: pointer;
+
+      &:hover,
+      &.dateTimePicker-active {
+        color: $dateTimePicker-color-hover;
+      }
+
+      &.dateTimePicker-active {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &.dateTimePicker-noDatePicker {
+    .dateTimePicker_container .timePicker .timePicker_label {
+      border-left: 1px solid transparent;
+    }
+  }
+
+  // Editor Animation
+  .datePicker_animation-appear,
+  .datePicker_animation-enter {
+    opacity: 0.01;
+
+    &.datePicker_calendar {
+      transform: translate3d(0, -10px, 0);
+    }
+
+    &.timePicker_editor {
+      transform: translate3d(0, -10px, 0) rotateX(60deg);
+    }
+
+    &.datePicker_animation-appear-active,
+    &.datePicker_animation-enter-active {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotateX(0deg);
+    }
+  }
+
+  .datePicker_animation-leave {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+
+    &.datePicker_animation-leave-active {
+      opacity: 0.01;
+
+      &.datePicker_calendar {
+        transform: translate3d(0, -10px, 0);
+      }
+
+      &.timePicker_editor {
+        transform: translate3d(0, -10px, 0) rotateX(60deg);
+      }
+    }
+  }
+
+  .datePicker_animation-height {
+    transition: height .3s ease-out;
+  }
+}

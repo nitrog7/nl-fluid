@@ -1,0 +1,36 @@
+$code-color-bg: $color-neutral-light !default;
+$code-color-text: $color-black !default;
+$code-color-comment: $color-neutral-dark !default;
+$code-color-highlight: $color-accent-2-dark !default;
+$code-border: 1px dotted $color-neutral-darker !default;
+$code-border-radius: 3px !default;
+$code-font-size: 0.75rem !default;
+$code-padding: 5px 15px !default;
+$code-margin: 0 0 10px !default;
+
+.code {
+  display: flex;
+  background-color: $code-color-bg;
+  border: $code-border;
+  border-radius: $code-border-radius;
+  padding: $code-padding;
+  margin: $code-margin;
+
+  code {
+    color: $code-color-text;
+    font-family: $font-family-monospace;
+    font-size: $code-font-size;
+    line-height: 1.5;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+
+    strong {
+      color: $code-color-highlight;
+    }
+
+    .code_comment {
+      color: $code-color-comment;
+    }
+  }
+}

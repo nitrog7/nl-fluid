@@ -1,0 +1,53 @@
+// Variables
+$sideBar-color-bg-default: transparent !default;
+$sideBar-color-bg-hover: $color-neutral-light !default;
+$sideBar-padding-default: 10px !default;
+$sideBar-padding-hover: 10px 10px 10px 15px !default;
+$sideBar-border-radius: 3px !default;
+$sideBar-font-size: 0.85rem !default;
+
+// Styles
+.sideBar {
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    & > a {
+      flex: 1;
+      font-size: $sideBar-font-size;
+      line-height: 1;
+      background-color: $sideBar-color-bg-default;
+      border-radius: $sideBar-border-radius;
+      padding: $sideBar-padding-default;
+      transition: 0.3s ease-out;
+
+      & > li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .icon {
+          opacity: 0;
+          padding-right: 5px;
+          transition: 0.3s ease-out;
+        }
+      }
+
+      &:hover {
+        background-color: $sideBar-color-bg-hover;
+        padding: $sideBar-padding-hover;
+
+        & > li {
+          .icon {
+            opacity: 1;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

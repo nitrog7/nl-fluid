@@ -1,0 +1,6 @@
+/build
+/src
+/demo
+/dist
+/node_modules
+gulpfile.js
