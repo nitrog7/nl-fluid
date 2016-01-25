@@ -28,12 +28,20 @@ export default class Box extends Component {
       display: 'flex'
     };
 
-    if(this.props.direction) {
-      styles.flexDirection = this.props.direction;
-    }
-
     if(this.props.grow) {
       styles.flexGrow = this.props.grow;
+    }
+    else if(this.props.shrink) {
+      styles.flexShrink = this.props.shrink;
+    }
+    else if(this.props.width) {
+      styles.flexBasis = this.props.width;
+    } else {
+      styles.flex = 1;
+    }
+
+    if(this.props.direction) {
+      styles.flexDirection = this.props.direction;
     }
 
     if(this.props.halign) {
@@ -44,16 +52,8 @@ export default class Box extends Component {
       styles.order = this.props.order;
     }
 
-    if(this.props.shrink) {
-      styles.flexShrink = this.props.shrink;
-    }
-
     if(this.props.valign) {
       styles.alignItems = this.props.valign;
-    }
-
-    if(this.props.width) {
-      styles.flexBasis = this.props.width;
     }
 
     if(this.props.wrap) {
@@ -66,6 +66,7 @@ export default class Box extends Component {
   render() {
     return (
       <div className={this.getStyles()} style={this.getBoxStyles()}>
+        {this.props.children}
       </div>
     );
   }

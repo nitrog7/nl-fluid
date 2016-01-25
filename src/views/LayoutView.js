@@ -1,5 +1,7 @@
 import React from 'react';
 import SideBar from 'components/SideBar';
+import Container from 'components/Container';
+import Box from 'components/Box';
 import { AppStore } from 'stores/index';
 
 export default class LayoutView extends React.Component {
@@ -30,12 +32,12 @@ export default class LayoutView extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid container-nav page page-layout">
-        <SideBar items={this.state.sideBar} />
-        <div className="view-sideBar-content">
+      <Container className='test'>
+        <SideBar items={this.state.sideBar} width={250} />
+        <Box>
           {this.props.children}
-        </div>
-      </div>
+        </Box>
+      </Container>
     );
   }
 }

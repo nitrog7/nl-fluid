@@ -1,5 +1,6 @@
 import React from 'react';
 import Component from './Component';
+import Box from './Box';
 import Icon from './Icon';
 import { Link } from 'react-router';
 import _ from 'lodash';
@@ -33,21 +34,23 @@ export default class SideBar extends Component {
 
       if(obj.to) {
         // If using React Router
-        return <Link key={`${this.name}-item-${i}`} {...props}><li>{obj.label} <Icon name="angle-right" /></li></Link>;
+        return <li key={`${this.name}-item-${i}`}><Link {...props}>{obj.label} <Icon name="angle-right" /></Link></li>;
       } else {
         // Otherwise use a normal link
-        return <a key={`${this.name}-item-${i}`} {...props}><li>{obj.label} <Icon name="angle-right" /></li></a>;
+        return <li key={`${this.name}-item-${i}`}><a {...props}>{obj.label} <Icon name="angle-right" /></a></li>;
       }
     });
   }
 
   render() {
+    let props = _.omit(this.props, ['items']);
+
     return (
-      <div className={this.getStyles()}>
+      <Box className={this.getStyles()} {...props}>
         <ul>
           {this.getMenuItems()}
         </ul>
-      </div>
+      </Box>
     );
   }
 }

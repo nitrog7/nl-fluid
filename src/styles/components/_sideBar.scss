@@ -10,38 +10,38 @@ $sideBar-font-size: 0.85rem !default;
 .sideBar {
   & > ul {
     display: flex;
+    flex: 1;
     flex-direction: column;
     padding: 0;
     margin: 0;
     list-style: none;
 
-    & > a {
-      flex: 1;
-      font-size: $sideBar-font-size;
-      line-height: 1;
-      background-color: $sideBar-color-bg-default;
-      border-radius: $sideBar-border-radius;
-      padding: $sideBar-padding-default;
-      transition: 0.3s ease-out;
+    & > li {
+      display: flex;
 
-      & > li {
+      & > a {
         display: flex;
+        flex: 1;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        font-size: $sideBar-font-size;
+        line-height: 1;
+        background-color: $sideBar-color-bg-default;
+        border-radius: $sideBar-border-radius;
+        padding: $sideBar-padding-default;
+        transition: 0.3s ease-out;
 
         .icon {
           opacity: 0;
           padding-right: 5px;
           transition: 0.3s ease-out;
         }
-      }
 
-      &:hover {
-        background-color: $sideBar-color-bg-hover;
-        padding: $sideBar-padding-hover;
+        &:hover {
+          background-color: $sideBar-color-bg-hover;
+          padding: $sideBar-padding-hover;
 
-        & > li {
           .icon {
             opacity: 1;
             padding-right: 0;
