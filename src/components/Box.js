@@ -10,9 +10,16 @@ export default class Box extends Component {
       halign: React.PropTypes.string,
       order: React.PropTypes.number,
       shrink: React.PropTypes.number,
+      type: React.PropTypes.string,
       valign: React.PropTypes.string,
       width: React.PropTypes.string,
       wrap: React.PropTypes.string
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      type: 'full'
     };
   }
 
@@ -25,7 +32,8 @@ export default class Box extends Component {
 
   getBoxStyles() {
     let styles = {
-      display: 'flex'
+      display: 'flex',
+      position: 'relative'
     };
 
     if(this.props.grow) {
@@ -36,7 +44,8 @@ export default class Box extends Component {
     }
     else if(this.props.width) {
       styles.flexBasis = this.props.width;
-    } else {
+    }
+    else if(this.props.type === 'full') {
       styles.flex = 1;
     }
 
@@ -58,6 +67,25 @@ export default class Box extends Component {
 
     if(this.props.wrap) {
       styles.flexWrap = this.props.wrap;
+    }
+
+    switch(this.props.type) {
+      case 'align-left':
+        styles.justifyContent = 'flex-start';
+        styles.alignItems = 'center';
+        break;
+      case 'align-right':
+        styles.justifyContent = 'flex-end';
+        styles.alignItems = 'center';
+        break;
+      case 'align-top':
+        styles.justifyContent = 'center';
+        styles.alignItems = 'flex-start';
+        break;
+      case 'align-bottom':
+        styles.justifyContent = 'center';
+        styles.alignItems = 'flex-end';
+        break;
     }
 
     return styles;

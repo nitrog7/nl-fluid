@@ -6,8 +6,27 @@ import _ from 'lodash';
 export default class Container extends Component {
   static propTypes() {
     return {
-      children: React.PropTypes.string
+      children: React.PropTypes.string,
+      hasNav: React.PropTypes.bool,
+      type: React.PropTypes.string
     };
+  }
+
+  static get defaultProps() {
+    return {
+      hasNav: false,
+      type: 'full'
+    };
+  }
+
+  addStyles() {
+    let cls = [];
+
+    if(this.props.hasNav) {
+      cls.push('container-has-nav');
+    }
+
+    return cls;
   }
 
   constructor(props) {

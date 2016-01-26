@@ -1,14 +1,14 @@
 // Variables
 $sideBar-color-bg-default: transparent !default;
-$sideBar-color-bg-hover: $color-neutral-light !default;
-$sideBar-padding-default: 10px !default;
-$sideBar-padding-hover: 10px 10px 10px 15px !default;
+$sideBar-padding-default: 5px 10px !default;
 $sideBar-border-radius: 3px !default;
 $sideBar-font-size: 0.85rem !default;
 
 // Styles
 .sideBar {
-  & > ul {
+  background-color: $sideBar-color-bg-default;
+
+  ul {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -18,8 +18,11 @@ $sideBar-font-size: 0.85rem !default;
 
     & > li {
       display: flex;
+      flex-direction: column;
+      transition: 0.3s ease-in-out;
 
-      & > a {
+      & > a,
+      & > div {
         display: flex;
         flex: 1;
         flex-direction: row;
@@ -27,26 +30,58 @@ $sideBar-font-size: 0.85rem !default;
         align-items: center;
         font-size: $sideBar-font-size;
         line-height: 1;
-        background-color: $sideBar-color-bg-default;
         border-radius: $sideBar-border-radius;
         padding: $sideBar-padding-default;
         transition: 0.3s ease-out;
 
         .icon {
-          opacity: 0;
           padding-right: 5px;
           transition: 0.3s ease-out;
         }
+      }
+
+      & > div {
+        font-weight: 700;
+
+        .icon {
+          opacity: 0.5;
+        }
 
         &:hover {
-          background-color: $sideBar-color-bg-hover;
-          padding: $sideBar-padding-hover;
-
           .icon {
+            transform: translateY(5px);
             opacity: 1;
-            padding-right: 0;
           }
         }
+      }
+
+      & > a {
+        .icon {
+          opacity: 0;
+        }
+
+        &:hover {
+          .icon {
+            transform: translateX(5px);
+            opacity: 1;
+          }
+        }
+      }
+
+      & > ul {
+        display: none;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+
+        & > li > a {
+          font-size: 0.8rem;
+          transform: translateX(5px);
+        }
+      }
+
+      &.sideBar-active > ul {
+        display: flex;
+        opacity: 1;
       }
     }
   }

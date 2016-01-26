@@ -2,13 +2,14 @@ import React from 'react';
 import * as components  from 'components';
 
 const {
+  Box,
   Code,
   Component,
   Container,
-  DateTimePicker
+  InputField
   } = components;
 
-export default class DateTimeView extends Component {
+export default class InputFieldView extends Component {
   constructor(props) {
     super(props);
 
@@ -20,15 +21,17 @@ export default class DateTimeView extends Component {
   render() {
     return (
       <Container direction="column">
-        <h1>DateTimePicker</h1>
+        <h1>InputField</h1>
         <p>&nbsp;</p>
 
         <h3>Default</h3>
         <Code>
           <span className="code_comment">// Default</span><br/>
-          &lt;DateTimePicker /&gt;<br/>
+          &lt;Box&gt;&lt;/Box&gt;<br/>
         </Code>
-        <DateTimePicker />
+        <Box type="align-left">
+          <InputField type="user" />
+        </Box>
       </Container>
     );
   }

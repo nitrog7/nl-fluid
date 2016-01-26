@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-class UploadField extends React.Component {
+export default class UploadField extends React.Component {
   static get propTypes() {
     return {
       onDrop: React.PropTypes.func,
@@ -241,5 +241,3 @@ class UploadField extends React.Component {
     );
   }
 }
-
-export default UploadField;

@@ -1,5 +1,16 @@
-export { default as ButtonView } from './ButtonView';
 export { default as BoxView } from './BoxView';
+export { default as ButtonView } from './ButtonView';
 export { default as DateTimeView } from './DateTimeView';
+export { default as FooterView } from './FooterView';
 export { default as HomeView } from './HomeView';
+export { default as IconView } from './IconView';
+export { default as InputFieldView } from './InputFieldView';
 export { default as LayoutView } from './LayoutView';
+export { default as LoaderView } from './LoaderView';
+export { default as NavBarView } from './NavBarView';
+export { default as PreviewItemView } from './PreviewItemView';
+export { default as SideBarView } from './SideBarView';
+export { default as TagFieldView } from './TagFieldView';
+export { default as TextEditorView } from './TextEditorView';
+export { default as UploadFieldView } from './UploadFieldView';
+export { default as View } from './View';

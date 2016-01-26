@@ -1,43 +1,49 @@
 import React from 'react';
-import SideBar from 'components/SideBar';
-import Container from 'components/Container';
-import Box from 'components/Box';
-import { AppStore } from 'stores/index';
+import { AppStore } from 'stores';
+import View from 'views/View';
+import * as components  from 'components';
 
-export default class LayoutView extends React.Component {
+const {
+  Box,
+  Container,
+  Footer,
+  NavBar,
+  SideBar
+  } = components;
+
+export default class LayoutView extends View {
   static propTypes() {
     return {
-      children: React.PropTypes.object,
-      route: React.PropTypes.object,
-      routes: React.PropTypes.array
-    };
-  }
-
-  static defaultProps() {
-    return {
-      route: {},
-      routes: []
+      children: React.PropTypes.object
     };
   }
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      menu: []
+    }
   }
 
   componentWillMount() {
     this.setState({
-      sideBar: AppStore.getData('componentMenu')
+      menu: AppStore.getData('siteMenu')
     });
   }
 
   render() {
     return (
-      <Container className='test'>
-        <SideBar items={this.state.sideBar} width={250} />
-        <Box>
-          {this.props.children}
-        </Box>
-      </Container>
+      <Box direction="column">
+        <NavBar items={this.state.menu} active={this.props.location.pathname} />
+        <Container className="demo" type="fluid" hasNav>
+          <SideBar items={this.state.menu} width={250} active={this.props.location.pathname} />
+          <Box>
+            {this.props.children}
+          </Box>
+        </Container>
+        <Footer items={this.state.menu} cols={2} active={this.props.location.pathname} />
+      </Box>
     );
   }
 }

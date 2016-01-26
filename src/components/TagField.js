@@ -12,8 +12,7 @@ const Keys = {
   ESCAPE: 27
 };
 
-
-class TagField extends React.Component {
+export default class TagField extends React.Component {
   static get propTypes() {
     return {
       allowDeleteFromEmptyInput: React.PropTypes.bool,
@@ -326,5 +325,3 @@ class Suggestions extends React.Component {
     )
   }
 }
-
-export default TagField;

@@ -127,6 +127,7 @@ let webpackConfig = {
     vendor: [
       'lodash',
       'moment',
+      'quill',
       'react',
       'react-addons-update',
       'react-css-transition-replace',
@@ -180,6 +181,7 @@ let webpackConfig = {
     commonChunk
   ],
   module: {
+    noParse: /node_modules\/quill\/dist/,
     preLoaders: [
       {
         loader: 'eslint-loader',

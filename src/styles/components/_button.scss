@@ -127,6 +127,8 @@ $btn-colors: (
 .btn {
   display: flex;
   flex-direction: row;
+  flex-basis: auto;
+  flex-shrink: 0;
   align-items: center;
   border-width: 1px;
   border-style: solid;
@@ -136,6 +138,10 @@ $btn-colors: (
   border-radius: 3px;
   user-select: none;
   transition: 0.15s ease-out;
+
+  & + .btn {
+    margin-left: 5px;
+  }
 
   &:focus {
     outline: none;

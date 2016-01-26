@@ -11,10 +11,10 @@ let defaultItems = [
         label: 'Size',
         type: 'size',
         items: [
-          {label: 'Normal', value: '10px'},
-          {label: 'Smaller', value: '13px'},
-          {label: 'Larger', value: '18px'},
-          {label: 'Huge', value: '32px'}
+          {label: 'Normal', value: '1rem'},
+          {label: 'Small', value: '0.85rem'},
+          {label: 'Large', value: '1.2rem'},
+          {label: 'X-Large', value: '2rem'}
         ]
       },
       {type: 'separator'},
@@ -53,7 +53,7 @@ let defaultItems = [
   }
 ];
 
-class TextEditor extends React.Component {
+export default class TextEditor extends React.Component {
   static get propTypes() {
     return {
       id: React.PropTypes.string,
@@ -402,6 +402,3 @@ class TextEditor extends React.Component {
     e.stopPropagation();
   }
 }
-
-
-export default TextEditor;

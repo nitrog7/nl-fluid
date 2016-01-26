@@ -1,3 +1,37 @@
-.container {
+$navBar-height: 75px !default;
 
+.container {
+  // Small - Default
+  position: relative;
+  flex: 1;
+  padding: 0 15px;
+  margin: 0;
+
+  &.container-has-nav {
+    padding-top: $navBar-height;
+  }
+
+  // Medium - Tablet portrait
+  @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2),
+  (min-device-width: 320px) and (max-device-height: 640px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3),
+  (min-device-width: 360px) and (max-device-height: 640px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3),
+  (min-device-width: 375px) and (max-device-height: 667px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2),
+  (min-device-width: 414px) and (max-device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2),
+  (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    width: 720px;
+    margin: 0 auto;
+  }
+
+  // Large - Desktop, Tablet landscape
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape),
+  (min-width: 1200px) {
+    width: 992px;
+    margin: 0 auto;
+  }
+
+  // X-Large - Desktop
+  @media only screen and (min-width: 1140px) and (orientation: landscape) {
+    width: 1170px;
+    margin: 0 auto;
+  }
 }

@@ -180,8 +180,6 @@ export default class DateTimePicker extends Component {
   }
 
   render() {
-    let editor = this.getEditor();
-
     return (
       <div className={this.getStyles()}>
         <div className='dateTimePicker_container'>
@@ -190,7 +188,7 @@ export default class DateTimePicker extends Component {
         <ReactCSSTransitionReplace transitionName="datePicker_animation"
           transitionEnterTimeout={300}
           transitionLeaveTimeout={300}>
-          {editor}
+          {this.getEditor()}
         </ReactCSSTransitionReplace>
       </div>
     );

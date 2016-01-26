@@ -1,17 +1,27 @@
 import { Dispatcher, Store } from 'nl-flux';
-import { AppConstants } from 'constants';
+import { AppConstants, RouteConstants } from 'constants';
 
 class AppStore extends Store {
   constructor() {
     super();
 
     this.demo = {
-      hello: 'Hello World',
-      componentMenu: [
-        {label: 'Box', to:'/components/Box'},
-        {label: 'Button', to:'/components/Button'},
-        {label: 'Date/Time Picker', to:'/components/DateTimePicker'},
-        {label: 'Sidebar', to:'/components/SideBar'}
+      siteMenu: [
+        {label: 'Components', to:'/' + RouteConstants.COMPONENTS, items:[
+          {label: 'Box', to:'/' + RouteConstants.BOX},
+          {label: 'Button', to:'/' + RouteConstants.BUTTON},
+          {label: 'Date/Time Picker', to:'/' + RouteConstants.DATE_TIME},
+          {label: 'Footer', to:'/' + RouteConstants.FOOTER},
+          {label: 'Icon', to:'/' + RouteConstants.ICON},
+          {label: 'InputField', to:'/' + RouteConstants.INPUT_FIELD},
+          {label: 'Loader', to:'/' + RouteConstants.LOADER},
+          {label: 'NavBar', to:'/' + RouteConstants.NAV_BAR},
+          {label: 'PreviewItem', to:'/' + RouteConstants.PREVIEW_ITEM},
+          {label: 'SideBar', to:'/' + RouteConstants.SIDE_BAR},
+          {label: 'TagField', to:'/' + RouteConstants.TAG_FIELD},
+          {label: 'TextEditor', to:'/' + RouteConstants.TEXT_EDITOR},
+          {label: 'UploadField', to:'/' + RouteConstants.UPLOAD_FIELD}
+        ]}
       ]
     };
   }

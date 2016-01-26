@@ -1,7 +1,6 @@
 import React from 'react';
-import TextEditor from 'components/TextEditor';
 
-class InputField extends React.Component {
+export default class InputField extends React.Component {
   static get propTypes() {
     return {
       status: React.PropTypes.string,
@@ -108,16 +107,6 @@ class InputField extends React.Component {
 
   }
 
-  createEditor() {
-    // Styles
-    this.inputCls.push('inputField-editor');
-
-    // Generate element
-    return (
-      <TextEditor className={this.inputCls.join(' ')} value={this.state.value} />
-    );
-  }
-
   createCheckbox() {
     // Generate element
     return (
@@ -154,9 +143,6 @@ class InputField extends React.Component {
     type = type.trim().toLowerCase();
 
     switch(type) {
-      case 'editor':
-        input = this.createEditor();
-        break;
       case 'textarea':
         input = this.createTextArea();
         break;
@@ -180,5 +166,3 @@ class InputField extends React.Component {
     return this.createElement();
   }
 }
-
-export default InputField;

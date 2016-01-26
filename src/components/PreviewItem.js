@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from 'components/Icon';
 
-class PreviewItem extends React.Component {
+export default class PreviewItem extends React.Component {
   static get propTypes() {
     return {
       src: React.PropTypes.string,
@@ -41,5 +41,3 @@ class PreviewItem extends React.Component {
     );
   }
 }
-
-export default PreviewItem;

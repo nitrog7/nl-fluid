@@ -1,4 +1,9 @@
 import React from 'react';
+import * as components  from 'components';
+
+const {
+  Container
+  } = components;
 
 export default class HomeView extends React.Component {
   constructor(props) {
@@ -9,10 +14,10 @@ export default class HomeView extends React.Component {
 
   render() {
     return (
-      <div className="container page-home">
+      <Container direction="column">
         <h1>NL Fluid</h1>
         <p>ReactJS Components</p>
-      </div>
+      </Container>
     );
   }
 }

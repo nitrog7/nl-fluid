@@ -1,13 +1,7 @@
-.page-layout {
-  display: flex;
-  flex-direction: row;
-  padding: 30px 15px;
+@import 'helper/variables';
 
+.demo {
   .sideBar {
-    flex-basis: 250px;
-  }
-
-  .view-sideBar-content {
-    flex-grow: 1
+    background-color: $color-neutral-light;
   }
 }

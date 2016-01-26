@@ -8,7 +8,8 @@ import _ from 'lodash';
 export default class SideBar extends Component {
   static propTypes() {
     return {
-      items: React.PropTypes.array
+      items: React.PropTypes.array,
+      active: React.PropTypes.string
     };
   }
 
@@ -21,25 +22,64 @@ export default class SideBar extends Component {
   constructor(props) {
     super(props, 'sideBar');
 
+    console.log('NavBar::router', this);
+
     // Methods
     this.getStyles = this.getStyles.bind(this);
     this.getMenuItems = this.getMenuItems.bind(this);
   }
 
-  getMenuItems() {
-    let items = this.state.items || [];
+  getMenuItems(items) {
+    items = items || [];
 
-    return items.map((obj, i) => {
+    let li = items.map((obj, i) => {
       let props = _.omit(obj, ['label']);
+      let cls;
 
-      if(obj.to) {
-        // If using React Router
-        return <li key={`${this.name}-item-${i}`}><Link {...props}>{obj.label} <Icon name="angle-right" /></Link></li>;
+      if(obj.items) {
+        let sub = this.getMenuItems(obj.items);
+        let active = this.props.active.indexOf(obj.to) === 0;
+
+        if(active) {
+          cls = 'sideBar-active';
+        }
+
+        return (
+          <li key={`${this.name}-item-${i}`} className={cls}>
+            <div {...props}>{obj.label} <Icon className="sideBar-expand" name="angle-down"/></div>{sub}
+          </li>);
       } else {
-        // Otherwise use a normal link
-        return <li key={`${this.name}-item-${i}`}><a {...props}>{obj.label} <Icon name="angle-right" /></a></li>;
+        if(obj.to) {
+          if(obj.to === this.props.active) {
+            cls = 'sideBar-active';
+          }
+
+          // If using React Router
+          return (
+            <li key={`${this.name}-item-${i}`} className={cls}>
+              <Link {...props}>{obj.label} <Icon className="sideBar-open" name="angle-right"/></Link>
+            </li>);
+        } else {
+          if(obj.href === this.props.active) {
+            cls = 'sideBar-active';
+          }
+
+          // Otherwise use a normal link
+          return (
+            <li key={`${this.name}-item-${i}`} className={cls}>
+              <a {...props}>{obj.label} <Icon className="sideBar-open" name="angle-right"/></a>
+            </li>);
+        }
       }
     });
+
+    if(li.length) {
+      return (
+        <ul>
+          {li}
+        </ul>
+      );
+    }
   }
 
   render() {
@@ -47,9 +87,7 @@ export default class SideBar extends Component {
 
     return (
       <Box className={this.getStyles()} {...props}>
-        <ul>
-          {this.getMenuItems()}
-        </ul>
+        {this.getMenuItems(this.state.items)}
       </Box>
     );
   }

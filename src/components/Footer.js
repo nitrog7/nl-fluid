@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
+import _ from 'lodash';
 
-class Footer extends React.Component {
+export default class Footer extends React.Component {
   static get propTypes() {
     return {
       active: React.PropTypes.string,
+      cols: React.PropTypes.number,
       items: React.PropTypes.array,
+      logo: React.PropTypes.string,
       user: React.PropTypes.object
     };
   }
@@ -13,6 +16,7 @@ class Footer extends React.Component {
   static get defaultProps() {
     return {
       active: '',
+      cols: 1,
       items: []
     };
   }
@@ -24,57 +28,50 @@ class Footer extends React.Component {
   menuItems() {
     let items = this.props.items;
 
-    return items.map((o, idx) => {
-      // Filter by component and user type
-      let nav = o.nav || '';
-
-      if(typeof(nav) === 'boolean' && nav) {
-        nav = 'public';
-      }
-
-      let navTypes = nav.split(',');
-      navTypes.map(item => item.trim().toLowerCase());
-
-      if(navTypes.indexOf('public') < 0) {
-        let user = this.props.user;
-
-        if(navTypes.indexOf('header') >= 0) {
-          return null;
-        }
-        else if(user && navTypes.indexOf(user.type) < 0) {
-          return null;
-        }
-        else if(user && navTypes.indexOf('isloggedin') >= 0) {
-          return null;
-        }
-        else if(!user && navTypes.indexOf('isloggedout') >= 0) {
-          return null;
-        }
-      }
-
-      // Create a unique key
-      let key = 'navBarItem-' + idx;
+    console.log('items', items);
+    let filtered = items.map((o, idx) => {
       let styles = '';
 
       // Check if active
       if(this.props.active === o.path) {
-        styles = 'active';
+        styles = 'footer-active';
       }
 
-      return <li key={key} className={styles}><Link to={o.path} title={o.name}>{o.name}</Link></li>;
+      if(o.to) {
+        return <li key={`footerItem-${idx}`} className={styles}><Link to={o.to} title={o.label}>{o.label}</Link></li>;
+      } else if(o.href) {
+        return <li key={`footerItem-${idx}`} className={styles}><a href={o.href} title={o.label}>{o.label}</a></li>;
+      } else if(o.header) {
+        return (
+          <li key={`footerItem-${idx}`} className="footer-header">
+            {o.label}
+          </li>
+        );
+      }
     });
+
+    if(filtered.length) {
+      let size = Math.ceil(filtered.length / this.props.cols);
+      let chunks = _.chunk(filtered, size);
+
+      return chunks.map((list, i) => {
+        return <ul key={`footerMenu-${i}`} className="footer_menu">{list}</ul>;
+      });
+    }
+  }
+
+  getLogo() {
+    if(this.props.logo) {
+      return <div className="footer_logo"><Link to="/" title="Home"/></div>;
+    }
   }
 
   render() {
     return (
       <div className="footer container-fluid">
-        <div className="footer_logo"><Link to="/" title="Home">UFAT</Link></div>
-        <ul className="footer_menu">
-          {this.menuItems()}
-        </ul>
+        {this.getLogo()}
+        {this.menuItems()}
       </div>
     );
   }
 }
-
-export default Footer;

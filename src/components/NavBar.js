@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-class NavBar extends React.Component {
+export default class NavBar extends React.Component {
   static get propTypes() {
     return {
       active: React.PropTypes.string,
       items: React.PropTypes.array,
+      router: React.PropTypes.object,
       user: React.PropTypes.object
     };
   }
@@ -51,24 +52,25 @@ class NavBar extends React.Component {
         }
       }
 
-      console.log('step2');
-      // Create a unique key
-      let key = 'navBarItem-' + idx;
       let styles = '';
 
       // Check if active
       if(this.props.active === o.path) {
-        styles = 'active';
+        styles = 'navBar-active';
       }
 
-      return <li key={key} className={styles}><Link to={o.path} title={o.name}>{o.name}</Link></li>;
+      if(o.to) {
+        return <li key={`navBarItem-${idx}`} className={styles}><Link to={o.to} title={o.label}>{o.label}</Link></li>;
+      } else if(o.href) {
+        return <li key={`navBarItem-${idx}`} className={styles}><a href={o.href} title={o.label}>{o.label}</a></li>;
+      }
     });
   }
 
   render() {
     return (
       <div className="navBar navBar-fixed">
-        <div className="navBar_logo"><Link to="/" title="Home">UFAT</Link></div>
+        <div className="navBar_logo"><Link to="/" title="Home"/></div>
         <ul className="navBar_menu">
           {this.menuItems()}
         </ul>
@@ -76,5 +78,3 @@ class NavBar extends React.Component {
     );
   }
 }
-
-export default NavBar;

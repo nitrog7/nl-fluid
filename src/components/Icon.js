@@ -4,12 +4,34 @@ import Component from './Component';
 export default class Icon extends Component {
   static get propTypes() {
     return {
-      name: React.PropTypes.string.isRequired
+      name: React.PropTypes.string.isRequired,
+      size: React.PropTypes.string
     }
+  }
+
+  static get defaultProps() {
+    return {
+      size: ''
+    };
   }
 
   constructor(props) {
     super(props, 'icon');
+  }
+
+  shouldComponentUpdate() {
+    return false;
+  }
+
+  addStyles() {
+    let cls = [];
+    let size = this.props.size.toLowerCase();
+
+    if(size !== '') {
+      cls.push('icon-' + size);
+    }
+
+    return cls;
   }
 
   render() {

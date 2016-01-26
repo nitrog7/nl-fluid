@@ -1,0 +1,59 @@
+// Variables
+$footer-color-bg: $color-black !default;
+$footer-color-text: $color-neutral-normal !default;
+$footer-color-hover: $color-primary-1-light !default;
+$footer-padding: 30px 50px !default;
+$footer-font-size: 0.85rem !default;
+
+// Styles
+.footer {
+  display: flex;
+  flex-direction: row;
+  color: $footer-color-text;
+  background-color: $footer-color-bg;
+  padding: $footer-padding;
+  justify-content: flex-end;
+
+  .footer_logo {
+    order: 1;
+    flex: 1;
+    background-position: top left;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .footer_menu {
+    order: 2;
+    list-style: none;
+    padding: 0;
+    margin: 0 15px;
+
+    & > li {
+      display: flex;
+      flex: 1;
+      margin: 5px 0;
+
+      &.footer-header,
+      & > a {
+        color: $footer-color-text;
+        font-size: $footer-font-size;
+      }
+
+      &.footer-header {
+        font-weight: 700;
+        text-transform: uppercase;
+        opacity: 0.35;
+      }
+
+      & > a {
+        display: flex;
+        flex: 1;
+        transition: 0.15s ease-out;
+
+        &:hover {
+          color: $footer-color-hover;
+        }
+      }
+    }
+  }
+}

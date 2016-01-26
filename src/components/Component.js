@@ -21,6 +21,7 @@ export default class Component extends React.Component {
 
     // Initial State
     this.state = props;
+    this.addStyles = this.addStyles.bind(this);
   }
 
   componentWillReceiveProps(props) {
