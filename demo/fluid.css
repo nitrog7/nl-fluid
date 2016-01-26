@@ -1362,43 +1362,66 @@ a:hover {
 }
 
 .navBar {
-  position: fixed;
+  position: relative;
   background-color: #333;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  width: 100%;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   height: 75px;
   overflow: hidden;
+  z-index: 1000;
+}
+
+.navBar.navBar-fixed {
+  position: fixed;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .navBar .navBar_logo {
   -webkit-order: 1;
       -ms-flex-order: 1;
           order: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background-position: top left;
-  background-size: contain;
+  -webkit-flex-basis: auto;
+      -ms-flex-preferred-size: auto;
+          flex-basis: auto;
+  margin-left: 15px;
+}
+
+.navBar .navBar_logo a {
+  display: block;
+  text-indent: -99999px;
   background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
 }
 
 .navBar .navBar_menu {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-order: 2;
       -ms-flex-order: 2;
           order: 2;
   color: #cacaca;
   list-style: none;
+  height: 100%;
   padding: 0;
   margin: 0 30px 0 0;
 }

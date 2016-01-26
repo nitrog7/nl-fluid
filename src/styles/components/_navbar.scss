@@ -1,16 +1,20 @@
-$navbar-bg-color: #f1f1f1 !default;
-$navbar-height: 50px !default;
-$navbar-logo-width: 150px !default;
-$navbar-logo-height: 70px !default;
-$navbar-link-color: $link-default-color !default;
-$navbar-active-color: $link-active-color !default;
-$navbar-z-index: 1000 !default;
+// Variables
+$navBar-color-bg: $color-black !default;
+$navBar-color-text: $color-neutral-normal !default;
+$navBar-color-hover: $color-primary-1-light !default;
+$navBar-padding: 30px 10px !default;
+$navBar-font-size: 1rem !default;
+$navBar-height: 75px !default;
 
+// Styles
 .navBar {
+  position: relative;
+  background-color: $navBar-color-bg;
+  display: flex;
   flex-grow: 1;
-  background: $navbar-bg-color;
-  height: $navbar-height;
-  z-index: $navbar-z-index;
+  height: $navBar-height;
+  overflow: hidden;
+  z-index: map-get($z-index, 'navBar');
 
   &.navBar-fixed {
     position: fixed;
@@ -21,7 +25,8 @@ $navbar-z-index: 1000 !default;
   }
 
   .navBar_logo {
-    flex-basis: $navbar-logo-width;
+    order: 1;
+    flex-basis: auto;
     margin-left: 15px;
 
     a {
@@ -30,8 +35,6 @@ $navbar-z-index: 1000 !default;
       background-repeat: no-repeat;
       background-position: left center;
       background-size: contain;
-      width: $navbar-logo-width;
-      height: $navbar-logo-height;
     }
   }
 
@@ -40,41 +43,28 @@ $navbar-z-index: 1000 !default;
     flex-grow: 1;
     justify-content: flex-end;
     align-items: center;
+    order: 2;
+    color: $navBar-color-text;
     list-style: none;
     height: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 30px 0 0;
 
     & > li {
-      flex-basis: auto;
-      height: 100%;
-      padding: 0 15px;
-
-      &.active {
-        font-weight: 700;
-      }
-
-      &:last-child {
-        padding-right: 30px;
-      }
+      display: flex;
+      flex: 1;
 
       & > a {
         display: flex;
-        align-items: center;
-        color: $navbar-link-color;
-        font-size: 14px;
-        text-decoration: none;
-        width: 100%;
-        height: 100%;
+        flex: 1;
+        color: $navBar-color-text;
+        padding: $navBar-padding;
+        transition: 0.15s ease-out;
 
         &:hover {
-          color: $navbar-active-color;
+          color: $navBar-color-hover;
         }
       }
     }
   }
-}
-
-.container-nav {
-  margin-top: $navbar-height;
 }
