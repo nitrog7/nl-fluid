@@ -1,0 +1,110 @@
+$tagField-color-placeholder: #aaa !default;
+$tagField-color-remove: $color-danger !default;
+
+.tagField {
+  font-size: 0.85rem;
+  border: 1px solid #999;
+  border-radius: 3px;
+  overflow: hidden;
+
+  .tagField_selected {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tagField_tag {
+    display: flex;
+    flex-direction: row;
+    background-color: #ddd;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 3px;
+    justify-content: center;
+    align-items: center;
+
+    .tagField_remove {
+      color: #000;
+      margin: 0 3px 0 8px;
+      opacity: 0.15;
+      cursor: pointer;
+
+      .icon {
+        width: 10px;
+        height: 10px;
+      }
+
+      &:hover {
+        color: $tagField-color-remove;
+        opacity: 1;
+      }
+    }
+  }
+
+  .tagField_input {
+    border: 1px solid transparent;
+    padding: 10px;
+
+    &:focus {
+      outline: none;
+    }
+
+    // Placeholder
+    &[placeholder] {
+      &::-webkit-input-placeholder {
+        color: $tagField-color-placeholder;
+        line-height: 1;
+        padding-top: 3px;
+        text-overflow: ellipsis;
+        transition: all 0.15s ease-out;
+      }
+
+      &:focus::-webkit-input-placeholder {
+        opacity: 0;
+        text-indent: 3px;
+      }
+
+      &::-moz-placeholder,
+      &:-moz-placeholder {
+        color: $tagField-color-placeholder;
+        line-height: 1;
+        padding-top: 3px;
+        text-overflow: ellipsis;
+        transition: all 0.15s ease-out;
+      }
+
+      &:focus::-moz-placeholder,
+      &:focus:-moz-placeholder {
+        opacity: 0;
+        text-indent: 3px;
+      }
+
+      &:-ms-input-placeholder {
+        color: $tagField-color-placeholder;
+        line-height: 1;
+        padding-top: 3px;
+        text-overflow: ellipsis;
+        transition: all 0.15s ease-out;
+      }
+
+      &:focus:-ms-input-placeholder {
+        opacity: 0;
+        text-indent: 3px;
+      }
+    }
+  }
+
+  .tagField_suggestions {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    list-style: none;
+    padding: 10px 15px;
+
+    & > li {
+      font-size: .9rem;
+      line-height: 2;
+    }
+  }
+}
