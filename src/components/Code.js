@@ -12,6 +12,10 @@ export default class Code extends Component {
     super(props, 'code');
   }
 
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     return (
       <pre className={this.getStyles()}>

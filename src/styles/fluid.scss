@@ -5,8 +5,8 @@
 @import 'base/normalize';
 @import 'base/print';
 @import 'base/base';
+@import 'base/fonts';
 @import 'base/type';
-@import 'base/form';
 
 // App
 @import 'components/button';
@@ -14,7 +14,10 @@
 @import 'components/container';
 @import 'components/dateTimePicker';
 @import 'components/footer';
+@import 'components/form';
+@import 'components/formField';
 @import 'components/icon';
+@import 'components/inputField';
 @import 'components/loader';
 @import 'components/navBar';
 @import 'components/sideBar';

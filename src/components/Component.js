@@ -13,19 +13,26 @@ export default class Component extends React.Component {
     };
   }
 
-  constructor(props, name) {
+  constructor(props, name, updateState = true) {
     super(props);
 
     // Component Name
     this.name = name || 'component';
+    this.updateState = updateState;
 
     // Initial State
-    this.state = props;
+    if(updateState) {
+      this.state = props;
+    }
+
+    // Methods
     this.addStyles = this.addStyles.bind(this);
   }
 
   componentWillReceiveProps(props) {
-    this.setState(props);
+    if(this.updateState) {
+      this.setState(props);
+    }
   }
 
   getStyles() {

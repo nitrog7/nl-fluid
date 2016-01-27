@@ -1,6 +1,8 @@
 export { default as BoxView } from './BoxView';
 export { default as ButtonView } from './ButtonView';
 export { default as DateTimeView } from './DateTimeView';
+export { default as FormView } from './FormView';
+export { default as FormFieldView } from './FormFieldView';
 export { default as FooterView } from './FooterView';
 export { default as HomeView } from './HomeView';
 export { default as IconView } from './IconView';

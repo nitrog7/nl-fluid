@@ -24,3 +24,7 @@ body {
 body {
   background-color: $body-color-bg;
 }
+
+*:focus {
+  outline: none;
+}

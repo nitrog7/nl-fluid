@@ -132,8 +132,7 @@ $btn-colors: (
   align-items: center;
   border-width: 1px;
   border-style: solid;
-  font-weight: 700;
-  font-size: .8rem;
+  font-weight: 100;
   padding: 10px 20px;
   border-radius: 3px;
   user-select: none;
@@ -195,6 +194,7 @@ $btn-colors: (
 
   &.btn-primary {
     @include btn-color('primary');
+    font-weight: 400;
   }
 
   &.btn-secondary {

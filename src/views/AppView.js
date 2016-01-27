@@ -7,6 +7,8 @@ const {
   BoxView,
   ButtonView,
   DateTimeView,
+  FormView,
+  FormFieldView,
   FooterView,
   HomeView,
   IconView,
@@ -39,6 +41,8 @@ export default class AppView extends React.Component {
           <Route path={RouteConstants.BOX} component={BoxView} />
           <Route path={RouteConstants.BUTTON} component={ButtonView} />
           <Route path={RouteConstants.DATE_TIME} component={DateTimeView} />
+          <Route path={RouteConstants.FORM} component={FormView} />
+          <Route path={RouteConstants.FORM_FIELD} component={FormFieldView} />
           <Route path={RouteConstants.FOOTER} component={FooterView} />
           <Route path={RouteConstants.ICON} component={IconView} />
           <Route path={RouteConstants.INPUT_FIELD} component={InputFieldView} />

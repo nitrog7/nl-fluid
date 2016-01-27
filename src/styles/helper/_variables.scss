@@ -1,7 +1,7 @@
-$font-sans-serif: 'Open+Sans:400,300,300italic,400italic,700,700italic';
-$font-family-sans-serif: 'Open Sans', sans-serif;
-$font-monospace:  'Roboto+Mono:400,700,400italic,700italic';
-$font-family-monospace:  'Roboto Mono', monospace;
+$font-sans-serif: 'Source+Sans+Pro:400,300,400italic,700,700italic';
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-monospace:  'Source+Code+Pro:400,700';
+$font-family-monospace:  'Source Code Pro', monospace;
 $font-family-base: $font-family-sans-serif;
 
 // Colors - Palette
@@ -45,7 +45,7 @@ $color-warning: $color-accent-1-normal;
 $color-danger: $color-primary-2-normal;
 
 // === TYPOGRAPHY ===
-$font-size-base: 14px;
+$font-size-base: 16px;
 
 // Headings
 $font-size-h1: 2.57rem; // ~36px
@@ -57,7 +57,7 @@ $font-size-h6: 0.85rem; // ~12px
 
 $headings-margin-bottom: 0.6rem;
 $headings-font-family: $font-family-base;
-$headings-font-weight: 400;
+$headings-font-weight: 100;
 $headings-line-height: 1;
 $headings-color: $color-primary-1-normal;
 
@@ -79,3 +79,6 @@ $input-font-size: $font-size-base;
 $z-index: (
   navBar: 1000
 );
+
+// RADIUS
+$radius-default: 3px;

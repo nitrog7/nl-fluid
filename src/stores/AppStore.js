@@ -11,6 +11,8 @@ class AppStore extends Store {
           {label: 'Box', to:'/' + RouteConstants.BOX},
           {label: 'Button', to:'/' + RouteConstants.BUTTON},
           {label: 'Date/Time Picker', to:'/' + RouteConstants.DATE_TIME},
+          {label: 'Form', to:'/' + RouteConstants.FORM},
+          {label: 'FormField', to:'/' + RouteConstants.FORM_FIELD},
           {label: 'Footer', to:'/' + RouteConstants.FOOTER},
           {label: 'Icon', to:'/' + RouteConstants.ICON},
           {label: 'InputField', to:'/' + RouteConstants.INPUT_FIELD},

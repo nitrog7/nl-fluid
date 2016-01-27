@@ -36,6 +36,7 @@ config.path = {
   src: {
     entry: config.absolute(config.directories.src, config.filenames.entry),
     js: config.relative(config.directories.src, '**/*.js'),
+    components: config.relative(config.directories.src, 'components/*.js'),
     html: config.relative(config.directories.src, '**/*.html'),
     scss: {
       main: config.relative(config.directories.src, 'styles/', config.filenames.scss),

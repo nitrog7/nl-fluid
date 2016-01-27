@@ -28,7 +28,7 @@ export default class BoxView extends View {
       isLoading: true
     });
 
-    this.timer = setTimeout(this.stopLoader, 5000);
+    this.timer = setTimeout(this.stopLoader, 3000);
   }
 
   stopLoader() {
@@ -54,9 +54,7 @@ export default class BoxView extends View {
           &lt;Loader isLoading={this.state.isLoading} name="spinner5" size="lg" /&gt;<br/>
         </Code>
         <Box type="align-left">
-          <Button onClick={this.startLoader}>Start for 5s</Button>
-          <Button onClick={this.startLoader}>Start for 5s</Button>
-          <Button onClick={this.startLoader}>Start for 5s</Button>
+          <Button onClick={this.startLoader}>Start for 3s</Button>
         </Box>
         <Loader isLoading={this.state.isLoading} name="spinner5" size="lg"/>
       </Container>

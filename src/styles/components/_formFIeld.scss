@@ -1,0 +1,62 @@
+$formField-color-success: $color-success !default;
+$formField-color-warning: $color-warning !default;
+$formField-color-error: $color-danger !default;
+$formField-radius: $radius-default !default;
+$formField-color-text: $color-white !default;
+
+.formField {
+  label {
+    margin-bottom: 5px;
+    z-index: 2;
+  }
+
+  .inputField {
+    z-index: 2;
+  }
+
+  &.formField-has-error {
+    .inputField {
+      border-radius: $formField-radius $formField-radius 0 0;
+    }
+  }
+
+  .formField_error {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $formField-color-text;
+    font-size: 0.85rem;
+    background-color: $formField-color-error;
+    border-radius: 0 0 $formField-radius $formField-radius;
+    padding: 5px 15px 6px 15px;
+    transition: 0.3s ease-out;
+    z-index: 1;
+
+    .icon {
+      margin-right: 5px;
+    }
+
+    // Editor Animation
+    &.formField_error-appear,
+    &.formField_error-enter {
+      opacity: 0.01;
+      transform: translateY(-5px);
+
+      &.formField_error-appear-active,
+      &.formField_error-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &.formField_error-leave {
+      opacity: 1;
+      transform: translateY(0);
+
+      &.formField_error-leave-active {
+        opacity: 0.01;
+        transform: translateY(-5px);
+      }
+    }
+  }
+}

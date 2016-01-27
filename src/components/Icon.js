@@ -19,10 +19,6 @@ export default class Icon extends Component {
     super(props, 'icon');
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
-
   addStyles() {
     let cls = [];
     let size = this.props.size.toLowerCase();

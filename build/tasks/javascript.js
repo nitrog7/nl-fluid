@@ -1,19 +1,12 @@
 import gulp from 'gulp';
 import config from '../config';
 import util from 'gulp-util';
-import webpack from 'webpack';
+import babel from 'gulp-babel';
 
-gulp.task('js:release', function(cb) {
-  // Run Webpack
-  webpack(config.webpack.prod, function(error, stats) {
-    if(error) {
-      throw new util.PluginError('[webpack]', error);
-    }
-
-    util.log('[webpack]', stats.toString({
-      color: true
-    }));
-
-    cb();
-  });
+gulp.task('js:release', () => {
+  return gulp.src([config.path.src.components])
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    .pipe(gulp.dest(config.absolute(config.directories.lib)));
 });

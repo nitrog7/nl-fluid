@@ -34,42 +34,41 @@ export default class SideBar extends Component {
 
     let li = items.map((obj, i) => {
       let props = _.omit(obj, ['label']);
-      let cls;
+      let cls, sub;
+      let iconName = 'angle-right';
+      let iconStyle = 'sideBar-open';
 
       if(obj.items) {
-        let sub = this.getMenuItems(obj.items);
         let active = this.props.active.indexOf(obj.to) === 0;
+        sub = this.getMenuItems(obj.items);
+        iconName = 'angle-down';
+        iconStyle = 'sideBar-expand';
 
         if(active) {
           cls = 'sideBar-active';
         }
+      }
 
+      if(obj.to) {
+        if(obj.to === this.props.active) {
+          cls = 'sideBar-active';
+        }
+
+        // If using React Router
         return (
           <li key={`${this.name}-item-${i}`} className={cls}>
-            <div {...props}>{obj.label} <Icon className="sideBar-expand" name="angle-down"/></div>{sub}
+            <Link {...props}>{obj.label} <Icon className={iconStyle} name={iconName}/></Link>{sub}
           </li>);
       } else {
-        if(obj.to) {
-          if(obj.to === this.props.active) {
-            cls = 'sideBar-active';
-          }
-
-          // If using React Router
-          return (
-            <li key={`${this.name}-item-${i}`} className={cls}>
-              <Link {...props}>{obj.label} <Icon className="sideBar-open" name="angle-right"/></Link>
-            </li>);
-        } else {
-          if(obj.href === this.props.active) {
-            cls = 'sideBar-active';
-          }
-
-          // Otherwise use a normal link
-          return (
-            <li key={`${this.name}-item-${i}`} className={cls}>
-              <a {...props}>{obj.label} <Icon className="sideBar-open" name="angle-right"/></a>
-            </li>);
+        if(obj.href === this.props.active) {
+          cls = 'sideBar-active';
         }
+
+        // Otherwise use a normal link
+        return (
+          <li key={`${this.name}-item-${i}`} className={cls}>
+            <a {...props}>{obj.label} <Icon className={iconStyle} name={iconName}/></a>{sub}
+          </li>);
       }
     });
 

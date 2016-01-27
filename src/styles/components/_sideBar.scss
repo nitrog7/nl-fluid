@@ -2,7 +2,7 @@
 $sideBar-color-bg-default: transparent !default;
 $sideBar-padding-default: 5px 10px !default;
 $sideBar-border-radius: 3px !default;
-$sideBar-font-size: 0.85rem !default;
+$sideBar-font-size: 1rem !default;
 
 // Styles
 .sideBar {
@@ -35,7 +35,6 @@ $sideBar-font-size: 0.85rem !default;
         transition: 0.3s ease-out;
 
         .icon {
-          padding-right: 5px;
           transition: 0.3s ease-out;
         }
       }
@@ -74,8 +73,8 @@ $sideBar-font-size: 0.85rem !default;
         transition: 0.3s ease-in-out;
 
         & > li > a {
-          font-size: 0.8rem;
-          transform: translateX(5px);
+          font-size: 0.9rem;
+          padding-left: 20px;
         }
       }
 
