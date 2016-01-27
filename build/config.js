@@ -147,9 +147,7 @@ let webpackConfig = {
       '.jsx'],
     modulesDirectories: [
       config.directories.src,
-      'web_loaders',
-      'web_modules',
-      'node_loaders',
+      'node_dev',
       'node_modules'
     ],
     alias: [

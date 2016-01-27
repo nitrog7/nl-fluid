@@ -1,6 +1,14 @@
+/.idea
 /build
-/src
 /demo
-/dist
+/src/actions
+/src/constants
+/src/stores
+/src/views
+/src/index.html
+/src/main.js
 /node_modules
+.babelrc
+.eslintrc
+.gitignore
 gulpfile.js

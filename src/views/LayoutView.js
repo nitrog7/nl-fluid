@@ -21,6 +21,7 @@ export default class LayoutView extends View {
   constructor(props) {
     super(props);
 
+    // Initial state
     this.state = {
       menu: []
     }
